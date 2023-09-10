@@ -6,6 +6,7 @@ class ScreenBuilder(MenuActions):
         self.root = Tk()
         self.rootConfig()
         self.menuBarConfig()
+        self.textAreaConfig()
 
         self.root.mainloop()
     def rootConfig(self):
@@ -14,7 +15,7 @@ class ScreenBuilder(MenuActions):
         scWidth = self.root.winfo_screenwidth()
         scHeight = self.root.winfo_screenheight()
 
-        self.root.geometry(f'{winWidth}x{winHeight}+{int(scWidth/2) - int(winWidth/2)}+{int(scHeight/2) - int(winHeight/2)}')
+        self.root.geometry(f'{winWidth}x{winHeight}+{int(scWidth/2) - int(winWidth/2)}+{int(scHeight/2.3) - int(winHeight/2)}')
 
     def menuBarConfig(self):
         menubar = Menu(self.root)
@@ -27,5 +28,7 @@ class ScreenBuilder(MenuActions):
         menuArquivo.add_command(label='Abrir', command=self.abrirArquivo)
         menuArquivo.add_command(label='Novo', command=self.novoArquivo())
 
+    def textAreaConfig(self):
+        textA = Text(self.root)
 
-
+        textA.place(rely=0, relx=0, relwidth=1, relheight=1)
