@@ -35,7 +35,10 @@ class MenuActions():
 
     def salvarArquivoComo(self):
         self.file = asksaveasfile(initialfile='Untitled', defaultextension='.txt', filetypes=[('TXT Files', '*.txt')]).name
+        with open(self.file, 'w', encoding='utf-8') as txtFile:
+            txtFile.write(self.textA.get(1.0, END))
         self.fileOpened = True
+        self.root.title(self.file)
 
     def limparTextArea(self):
         self.textA.delete(1.0, END)

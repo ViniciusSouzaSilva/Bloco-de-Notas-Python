@@ -28,7 +28,7 @@ class ScreenBuilder(MenuActions):
         menuArquivo.configure(borderwidth=10)
 
         menubar.add_cascade(label='Arquivo', menu=menuArquivo)
-        menuArquivo.add_command(label='Salvar', command=self.salvarArquivo)
-        menuArquivo.add_command(label='Abrir', command=self.abrirArquivo)
         menuArquivo.add_command(label='Novo', command=self.novoArquivo)
-
+        menuArquivo.add_command(label='Salvar', command=self.salvarArquivo)
+        menuArquivo.add_command(label='Abrir...', command=self.abrirArquivo)
+        menuArquivo.add_command(label='Salvar como...', command=self.salvarArquivoComo)
