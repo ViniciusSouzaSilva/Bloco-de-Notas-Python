@@ -3,10 +3,12 @@ from MenuActions import MenuActions
 
 class ScreenBuilder(MenuActions):
     def __init__(self):
+        self.fileOpened = False
         self.root = Tk()
         self.rootConfig()
         self.menuBarConfig()
         self.textAreaConfig()
+
 
         self.root.mainloop()
     def rootConfig(self):
@@ -28,5 +30,5 @@ class ScreenBuilder(MenuActions):
         menubar.add_cascade(label='Arquivo', menu=menuArquivo)
         menuArquivo.add_command(label='Salvar', command=self.salvarArquivo)
         menuArquivo.add_command(label='Abrir', command=self.abrirArquivo)
-        menuArquivo.add_command(label='Novo', command=self.novoArquivo())
+        menuArquivo.add_command(label='Novo', command=self.novoArquivo)
 

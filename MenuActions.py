@@ -1,20 +1,29 @@
 from tkinter import *
-from tkinter.filedialog import askopenfile
+from tkinter.filedialog import askopenfile, asksaveasfile
 
 class MenuActions():
     def __init__(self):
-        print()
+        self.fileOpened = False
 
     def salvarArquivo(self):
-        print()
+        self.content = self.textA.get(1.0, END)
+
+        if self.fileOpened == True:
+            with open(self.file, 'w', encoding='utf-8') as txtFile:
+                txtFile.write(self.content)
+        else:
+            self.salvarArquivoComo()
+
+        print(self.content)
 
     def abrirArquivo(self):
-        content = []
-        file = askopenfile(mode='r', filetypes=[('TXT Files', '*.txt')]).name
+        self.file = askopenfile(mode='r', filetypes=[('TXT Files', '*.txt')]).name
+        self.fileOpened = True
+        self.root.title(self.file)
+        self.limparTextArea()
 
-        with open(file, 'r', encoding='utf-8') as txtFile:
+        with open(self.file, 'r', encoding='utf-8') as txtFile:
             for i in txtFile:
-                content.append(i)
                 self.textA.insert(END, i)
 
     def novoArquivo(self):
@@ -23,3 +32,10 @@ class MenuActions():
     def textAreaConfig(self):
         self.textA = Text(self.root)
         self.textA.place(rely=0, relx=0, relwidth=1, relheight=1)
+
+    def salvarArquivoComo(self):
+        self.file = asksaveasfile(initialfile='Untitled', defaultextension='.txt', filetypes=[('TXT Files', '*.txt')]).name
+        self.fileOpened = True
+
+    def limparTextArea(self):
+        self.textA.delete(1.0, END)
