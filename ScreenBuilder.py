@@ -15,6 +15,8 @@ class ScreenBuilder(MenuActions):
         scWidth = self.root.winfo_screenwidth()
         scHeight = self.root.winfo_screenheight()
 
+        self.root.title('Bloco de Notas')
+
         self.root.geometry(f'{winWidth}x{winHeight}+{int(scWidth/2) - int(winWidth/2)}+{int(scHeight/2.3) - int(winHeight/2)}')
 
     def menuBarConfig(self):
@@ -28,7 +30,3 @@ class ScreenBuilder(MenuActions):
         menuArquivo.add_command(label='Abrir', command=self.abrirArquivo)
         menuArquivo.add_command(label='Novo', command=self.novoArquivo())
 
-    def textAreaConfig(self):
-        textA = Text(self.root)
-
-        textA.place(rely=0, relx=0, relwidth=1, relheight=1)
