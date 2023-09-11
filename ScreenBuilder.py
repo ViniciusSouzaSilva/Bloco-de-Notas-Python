@@ -9,7 +9,6 @@ class ScreenBuilder(MenuActions):
         self.menuBarConfig()
         self.textAreaConfig()
 
-
         self.root.mainloop()
     def rootConfig(self):
         winWidth = int(self.root.winfo_screenwidth()/3)
